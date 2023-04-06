@@ -11,8 +11,17 @@ if(isset($_POST['add_button'])){
 
 $students = $objcrudapp->display_data();
 
+  if(isset($_GET['status'])){
+    if($_GET['status'] = 'delete'){
+      $delete_data = $_GET['id'];
 
-?>
+      $objcrudapp->delete_data($delete_data);
+    }
+
+  }
+
+
+?> 
 
 
 
@@ -71,8 +80,8 @@ $students = $objcrudapp->display_data();
                 <td><?php echo $stu_info['std_roll']; ?></td>
                 <td><img style="height:100px;" src="upload/<?php echo $stu_info['std_img']; ?>"></td>
                 <td>
-                    <a class="btn btn-success" href="#">Edit</a>
-                    <a class="btn btn-warning" href="#">Delete</a>
+                    <a class="btn btn-success" href="edit.php?status=edit&&id=<?php echo $stu_info['id']; ?>">Edit</a>
+                    <a class="btn btn-warning" href="?status=delete&&id=<?php echo $stu_info['id']; ?>">Delete</a>
                 </td>
             </tr>
             <?php }?>
